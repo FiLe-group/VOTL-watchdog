@@ -14,7 +14,11 @@ repositories {
 
 dependencies {
 	// https://mvnrepository.com/artifact/net.dv8tion/JDA
-	compileOnly("net.dv8tion:JDA:5.5.1")
+	implementation("net.dv8tion:JDA:5.5.1")
+	// https://mvnrepository.com/artifact/commons-cli/commons-cli
+	implementation("commons-cli:commons-cli:1.9.0")
+	// https://mvnrepository.com/artifact/org.jsoup/jsoup
+	implementation("org.jsoup:jsoup:1.20.1")
 }
 
 java {
@@ -26,8 +30,22 @@ kotlin {
 	jvmToolchain(21)
 }
 
+tasks.jar {
+	enabled = false
+}
+
 tasks.build {
 	dependsOn(tasks.shadowJar)
+
+	doLast {
+		copy {
+			from("build/libs") {
+				include("VOTL-*.jar")
+			}
+			into(".")
+			rename("VOTL-(.*).jar", "VOTL-watchdog.jar")
+		}
+	}
 }
 
 artifacts {
@@ -35,7 +53,7 @@ artifacts {
 }
 
 tasks.shadowJar {
-	archiveBaseName.set("votl-watchdog")
+	archiveBaseName.set("VOTL-watchdog")
 	archiveClassifier.set("")
 	archiveVersion.set(version.toString())
 
