@@ -1,0 +1,9 @@
+services:
+  wdvotl:
+    build:
+      context: .
+    restart: on-failure:2
+    volumes:
+      - C:\wdvotl:/opt/wdvotl
+volumes:
+  wdvotl:

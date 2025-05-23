@@ -73,8 +73,6 @@ tasks.shadowJar {
 			"Implementation-Vendor" to "FiLe group",
 		)
 	}
-
-	finalizedBy("sourcesJar")
 }
 
 tasks.compileJava {
