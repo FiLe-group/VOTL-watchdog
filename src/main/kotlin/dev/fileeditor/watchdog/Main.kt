@@ -19,7 +19,7 @@ object Main {
 		options.addOption("h", "help", false, "Displays this help menu.")
 		options.addOption("v", "version", false, "Displays the current version of the application.")
 		options.addOption("sc", "shard-count", true, "Sets the amount of shards the bot should start up.")
-		options.addOption("nocolor", "no-colors", false, "Disables colors for commands and AI actions in the terminal.")
+		options.addOption("nocolor", "no-colors", false, "Disables colors for commands in the terminal.")
 		options.addOption("d", "debug", false, "Enables debugging mode, this will log extra information to the terminal.")
 		options.addOption("jarg", "jvm-argument", true, "Sets the JVM arguments that the application should be started with.")
 
