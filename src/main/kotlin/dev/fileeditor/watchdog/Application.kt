@@ -44,28 +44,32 @@ class Application(private val commandArguments: CommandLine): Thread() {
 
 	override fun run() {
 		while (running) {
-			process = boot()
+			try {
+				process = boot()
 
-			process!!.inputStream.bufferedReader().useLines { lines ->
-				lines.forEach { println(it) }
-			}
+				process!!.inputStream.bufferedReader().useLines { lines ->
+					lines.forEach { println(it) }
+				}
 
-			val exitCode = process!!.waitFor()
-			Logger.info("Bot exited with code: $exitCode")
+				val exitCode = process!!.waitFor()
+				Logger.info("Bot exited with code: $exitCode")
 
-			when (exitCode) {
-				ExitCodes.UPDATE.code -> {
-					Logger.info("Now updating...")
-					updateState.run()
+				when (exitCode) {
+					ExitCodes.UPDATE.code -> {
+						Logger.info("Now updating...")
+						updateState.run()
+					}
+					ExitCodes.NORMAL.code, 130 -> {
+						Logger.info("Now shutting down...")
+						shutdownState.run()
+						break
+					}
+					else -> {
+						Logger.info("Now restarting...")
+					}
 				}
-				ExitCodes.NORMAL.code, 130 -> {
-					Logger.info("Now shutting down...")
-					shutdownState.run()
-					break
-				}
-				else -> {
-					Logger.info("Now restarting...")
-				}
+			} catch (e: IOException) {
+				e.printStackTrace()
 			}
 		}
 	}
@@ -81,11 +85,12 @@ class Application(private val commandArguments: CommandLine): Thread() {
 		lastBoot = System.currentTimeMillis()
 
 		if (recentBoots >= 4) {
-			Logger.info("Failed to restart 3 times, probably due to login errors. Exiting...")
+			Logger.info("Failed to restart 3 times, probably due to login or configuration errors. Exiting...")
 			exitProcess(ExitCodes.ERROR.code)
 		}
 
 		val command = mutableListOf<String>()
+		command.add("java")
 
 		if (Main.isWindows) {
 			command.add("-Dfile.encoding=UTF-8")

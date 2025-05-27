@@ -13,6 +13,7 @@ object Main {
 	val isWindows = System.getProperty("os.name").lowercase().contains("win")
 	val botJar = File("VOTL.jar")
 
+	@JvmStatic
 	fun main(args: Array<String>) {
 		val options = Options()
 
