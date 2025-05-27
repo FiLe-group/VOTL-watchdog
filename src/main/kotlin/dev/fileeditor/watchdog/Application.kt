@@ -26,7 +26,7 @@ class Application(private val commandArguments: CommandLine): Thread() {
 		updateState.updater = BuildUpdater(this)
 
 		if (!Main.botJar.exists()) {
-			Logger.info("VOTL sources was not found!")
+			Logger.info("VOTL sources was not found at "+Main.botJar.absolutePath+"!")
 			updateState.run()
 		}
 

@@ -1,9 +1,10 @@
+name: votl-watchdog
+
 services:
   wdvotl:
-    build:
-      context: .
-    restart: on-failure:2
+    image: fileeditor/votl-watchdog
+    container_name: votl-watchdog
     volumes:
-      - C:\wdvotl:/opt/wdvotl
+      - votl-data:/opt/wdvotl/data
 volumes:
-  wdvotl:
+  votl-data:
