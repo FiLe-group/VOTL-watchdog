@@ -5,6 +5,7 @@ services:
     image: fileeditor/votl-watchdog
     container_name: votl-watchdog
     volumes:
-      - votl-data:/opt/wdvotl/data
-volumes:
-  votl-data:
+      - ./data:/opt/wdvotl/data
+      - ./logs:/opt/wdvotl/logs
+    pull_policy: every_12h
+    restart: on-failure:2
