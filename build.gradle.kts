@@ -1,5 +1,5 @@
 plugins {
-	kotlin("jvm") version "2.1.21"
+	kotlin("jvm") version "2.3.0-RC2"
 	// https://mvnrepository.com/artifact/com.gradleup.shadow/shadow-gradle-plugin
 	id("com.gradleup.shadow") version "9.3.0"
 	id("org.jetbrains.dokka") version "2.1.0"
