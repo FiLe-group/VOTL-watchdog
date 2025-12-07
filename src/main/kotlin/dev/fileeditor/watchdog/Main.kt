@@ -2,7 +2,7 @@ package dev.fileeditor.watchdog
 
 import dev.fileeditor.watchdog.constants.ExitCodes
 import org.apache.commons.cli.DefaultParser
-import org.apache.commons.cli.HelpFormatter
+import org.apache.commons.cli.help.HelpFormatter
 import org.apache.commons.cli.Options
 import org.apache.commons.cli.ParseException
 import java.io.File
@@ -25,12 +25,12 @@ object Main {
 		options.addOption("jarg", "jvm-argument", true, "Sets the JVM arguments that the application should be started with.")
 
 		val parser = DefaultParser()
-		val formatter = HelpFormatter()
+		val formatter = HelpFormatter.builder().get()
 
 		try {
 			val cmd = parser.parse(options, args)
 			if (cmd.hasOption("h")) {
-				formatter.printHelp("Help menu", options)
+				formatter.printHelp("java -jar VOTL-watchdog.jar", "Help menu", options, "", false)
 				exitProcess(ExitCodes.NORMAL.code)
 			}
 			if (cmd.hasOption("v")) {
@@ -41,7 +41,7 @@ object Main {
 			Application(cmd)
 		} catch (e: ParseException) {
 			println(e.message)
-			formatter.printHelp("", options)
+			formatter.printHelp("java -jar VOTL-watchdog.jar", "Help menu", options, "", false)
 
 			exitProcess(ExitCodes.NORMAL.code)
 		}

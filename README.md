@@ -15,7 +15,7 @@ Rewrite is done in Kotlin and includes some new features.
 
 Watchdog has a few system requirements, that ensure that Watchdog and all of its features will work correctly.
 
-- [JAVA SE / JDK](https://www.oracle.com/java/) >= 21
+- [JAVA SE / JDK](https://www.oracle.com/java/) >= 25
 - 128 MB Memory
 
 #### Installing Watchdog

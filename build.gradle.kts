@@ -1,12 +1,12 @@
 plugins {
 	kotlin("jvm") version "2.1.21"
 	// https://mvnrepository.com/artifact/com.gradleup.shadow/shadow-gradle-plugin
-	id("com.gradleup.shadow") version "9.0.0-beta13"
-	id("org.jetbrains.dokka") version "2.0.0"
+	id("com.gradleup.shadow") version "9.3.0"
+	id("org.jetbrains.dokka") version "2.1.0"
 }
 
 group = "dev.fileeditor"
-version = "1.0"
+version = "1.1"
 
 repositories {
 	mavenCentral()
@@ -14,20 +14,20 @@ repositories {
 
 dependencies {
 	// https://mvnrepository.com/artifact/net.dv8tion/JDA
-	implementation("net.dv8tion:JDA:5.5.1")
+	implementation("net.dv8tion:JDA:6.1.2")
 	// https://mvnrepository.com/artifact/commons-cli/commons-cli
-	implementation("commons-cli:commons-cli:1.9.0")
+	implementation("commons-cli:commons-cli:1.11.0")
 	// https://mvnrepository.com/artifact/org.jsoup/jsoup
-	implementation("org.jsoup:jsoup:1.20.1")
+	implementation("org.jsoup:jsoup:1.21.2")
 }
 
 java {
-	sourceCompatibility = JavaVersion.VERSION_21
-	targetCompatibility = JavaVersion.VERSION_21
+	sourceCompatibility = JavaVersion.VERSION_25
+	targetCompatibility = JavaVersion.VERSION_25
 }
 
 kotlin {
-	jvmToolchain(21)
+	jvmToolchain(25)
 }
 
 tasks.jar {

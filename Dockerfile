@@ -1,5 +1,5 @@
 # Build container
-FROM --platform=$BUILDPLATFORM eclipse-temurin:21-alpine AS build
+FROM --platform=$BUILDPLATFORM eclipse-temurin:25-alpine AS build
 ARG TARGETOS
 ARG TARGETARCH
 
@@ -13,7 +13,7 @@ RUN sed -i 's/\r$//' gradlew && chmod +x gradlew
 RUN ./gradlew build --no-daemon
 
 # Run container
-FROM eclipse-temurin:21-alpine AS runtime
+FROM eclipse-temurin:25-alpine AS runtime
 
 WORKDIR /opt/wdvotl
 
