@@ -27,7 +27,7 @@ Start by cloning down the source code and building the binary using Gradle, opti
     cd VOTL-watchdog
     .\gradlew build
 
-The binary file cane be found withing the root of the `VOTL-wathcdog` directory, next we'll need to run Watchdog so it
+The binary file cane be found withing the root of the `VOTL-watchdog` directory, next we'll need to run Watchdog so it
 can download out [VOTL](https://github.com/FiLe-group/VOTL) jar file, to do this run:
 
     java -jar VOTL-watchdog.jar
