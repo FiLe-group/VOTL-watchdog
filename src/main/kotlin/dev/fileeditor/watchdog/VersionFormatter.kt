@@ -19,7 +19,7 @@ object VersionFormatter {
 
 			if (content.isBlank()) {
 				println("No VOTL.jar file found, unable to show the version of bot being used.")
-				println("Watchdog is version: " + AppInfo.VERSION)
+				println("Watchdog version: " + AppInfo.VERSION)
 				return
 			}
 

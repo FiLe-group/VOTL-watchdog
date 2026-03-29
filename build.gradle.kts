@@ -1,12 +1,12 @@
 plugins {
-	kotlin("jvm") version "2.3.0-RC2"
+	kotlin("jvm") version "2.3.20"
 	// https://mvnrepository.com/artifact/com.gradleup.shadow/shadow-gradle-plugin
-	id("com.gradleup.shadow") version "9.3.0"
-	id("org.jetbrains.dokka") version "2.1.0"
+	id("com.gradleup.shadow") version "9.4.1"
+	id("org.jetbrains.dokka") version "2.2.0"
 }
 
 group = "dev.fileeditor"
-version = "1.1"
+version = "1.2"
 
 repositories {
 	mavenCentral()
@@ -14,11 +14,13 @@ repositories {
 
 dependencies {
 	// https://mvnrepository.com/artifact/net.dv8tion/JDA
-	implementation("net.dv8tion:JDA:6.1.2")
+	implementation("net.dv8tion:JDA:6.3.2")
 	// https://mvnrepository.com/artifact/commons-cli/commons-cli
 	implementation("commons-cli:commons-cli:1.11.0")
 	// https://mvnrepository.com/artifact/org.jsoup/jsoup
-	implementation("org.jsoup:jsoup:1.21.2")
+	implementation("org.jsoup:jsoup:1.22.1")
+	// Source: https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-serialization-json
+	implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.10.0")
 }
 
 java {
@@ -43,7 +45,6 @@ tasks.build {
 				include("VOTL-*.jar")
 			}
 			into(".")
-			rename("VOTL-(.*).jar", "VOTL-watchdog.jar")
 		}
 	}
 }

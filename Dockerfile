@@ -35,6 +35,6 @@ RUN adduser \
 
 USER votl
 
-COPY --from=build /app/VOTL-watchdog.jar /opt/wdvotl/
+COPY --from=build /app/VOTL-watchdog-*.jar /opt/wdvotl/VOTL-watchdog.jar
 
 ENTRYPOINT ["java","-jar","/opt/wdvotl/VOTL-watchdog.jar"]
