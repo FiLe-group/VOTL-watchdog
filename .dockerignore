@@ -1,34 +1,48 @@
-# Include any files or directories that you don't want to be copied to your
-# container here (e.g., local build artifacts, temporary files, etc.).
-#
-# For more help, visit the .dockerignore file reference guide at
-# https://docs.docker.com/go/build-context-dockerignore/
+# Everything that must not reach the build context.
+# Keeping this tight matters: anything listed here is hashed on every build and
+# a stale host-side build/ or root *.jar can silently end up in the image.
 
-**/.classpath
-**/.dockerignore
-**/.env
+# Build outputs / tool state
+build/
+out/
+bin/
+.gradle/
+.kotlin/
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+
+# Runtime state (bind-mounted at run time, never baked in)
+data/
+logs/
+
+# VCS & tooling
 **/.git
 **/.gitignore
-**/.project
-**/.settings
-**/.toolstarget
+**/.gitattributes
+**/.github
+**/.env
+**/.idea
 **/.vs
 **/.vscode
-**/.next
-**/.cache
-**/*.*proj.user
-**/*.dbmdl
-**/*.jfm
-**/charts
+**/.settings
+**/.classpath
+**/.project
+**/*.iml
+**/*.ipr
+**/*.iws
+
+# Docker & docs
+**/Dockerfile*
+**/.dockerignore
 **/docker-compose*
 **/compose.y*ml
-**/target
-**/Dockerfile*
+**/charts
+LICENSE.md
+README.md
+
+# Misc
+**/.DS_Store
 **/node_modules
 **/npm-debug.log
-**/obj
 **/secrets.dev.yaml
 **/values.dev.yaml
-**/vendor
-LICENSE
-README.md

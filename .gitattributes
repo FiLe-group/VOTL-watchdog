@@ -1,0 +1,9 @@
+# The wrapper is executed by /bin/sh inside Linux containers: it must stay LF
+# even when checked out on Windows, otherwise the build needs a dos2unix fixup.
+gradlew text eol=lf
+*.sh text eol=lf
+
+gradlew.bat text eol=crlf
+
+*.jar binary
+*.zip binary
