@@ -1,12 +1,12 @@
 plugins {
-	kotlin("jvm") version "2.4.0"
+	kotlin("jvm") version "2.4.10"
 	// https://mvnrepository.com/artifact/com.gradleup.shadow/shadow-gradle-plugin
-	id("com.gradleup.shadow") version "9.4.3"
+	id("com.gradleup.shadow") version "9.6.1"
 	id("org.jetbrains.dokka") version "2.2.0"
 }
 
 group = "dev.fileeditor"
-version = "1.3"
+version = "1.4"
 
 repositories {
 	mavenCentral()
@@ -14,11 +14,11 @@ repositories {
 
 dependencies {
 	// https://mvnrepository.com/artifact/net.dv8tion/JDA
-	implementation("net.dv8tion:JDA:6.4.2")
+	implementation("net.dv8tion:JDA:6.5.0")
 	// https://mvnrepository.com/artifact/commons-cli/commons-cli
 	implementation("commons-cli:commons-cli:1.11.0")
 	// https://mvnrepository.com/artifact/org.jsoup/jsoup
-	implementation("org.jsoup:jsoup:1.22.2")
+	implementation("org.jsoup:jsoup:1.23.1")
 	// Source: https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-serialization-json
 	implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0")
 }
